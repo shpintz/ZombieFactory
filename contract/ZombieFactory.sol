@@ -12,4 +12,7 @@ contract ZombieFactory{
         uint dna;
     }
 
+  // Array of zombies inside zombies
+  Zombie[] public zombies;
+
 }
