@@ -44,8 +44,10 @@ contract ZombieFactory{
 
   // CreateRandomZombie = using private function to generate random DNA + createZombie function with name and dna
   function createRandomZombie(string memory _name) public {
-      uint randDna = _generateRandomDna(_name);
-      _createZombie(_name, randDna);
+    // This make it so person can run this function once if they have zombie it wont run
+    require(ownerZombieCount[msg.sender] == 0);
+    uint randDna = _generateRandomDna(_name);
+    _createZombie(_name, randDna);
   }
 
 }
