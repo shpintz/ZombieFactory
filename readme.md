@@ -1,0 +1,1 @@
+This is basically going to be my journey into solidity with crypto zombies
