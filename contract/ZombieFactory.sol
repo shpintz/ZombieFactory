@@ -26,6 +26,11 @@ contract ZombieFactory{
   // Function Create Zombie
   function _createZombie(string memory _name, uint _dna) private {
     uint id = zombies.push(Zombie(_name, _dna)) - 1;
+    // Adds the zombie ID to the ETH address
+    zombieToOwner[id] = msg.sender;
+    // Updates Eth address with amount of zombies it owns
+    ownerZombieCount[msg.sender]++;
+
     // Everytime this function is run the event will fire here
     emit NewZombie(id, _name, _dna);
 
