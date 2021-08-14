@@ -8,11 +8,16 @@ contract ZombieFactory{
 
   // Complex Data that have mulitple properies
   struct Zombie{
-        string name;
-        uint dna;
-    }
+    string name;
+    uint dna;
+  }
 
   // Array of zombies inside zombies
   Zombie[] public zombies;
+
+  // Function Create Zombie
+  function createZombie(string memory _name, uint _dna) public {
+
+  }
 
 }
