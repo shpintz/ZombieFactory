@@ -18,6 +18,11 @@ contract ZombieFactory{
   // Array of zombies inside zombies
   Zombie[] public zombies;
 
+  // we'll store and look up the zombie based on its id
+  mapping (uint => address) public zombieToOwner;
+  // We'll see how many zombies owner has
+  mapping (address => uint) ownerZombieCount;
+
   // Function Create Zombie
   function _createZombie(string memory _name, uint _dna) private {
     uint id = zombies.push(Zombie(_name, _dna)) - 1;
