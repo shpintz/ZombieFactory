@@ -4,6 +4,12 @@ contract ZombieFactory{
 
   // state varibales
   uint dnaDigits = 16;
-  uint dnaModules = 10 ** dnaDigits;
+  uint dnaModulus = 10 ** dnaDigits;
+
+  // Complex Data that have mulitple properies
+  struct Zombie{
+        string name;
+        uint dna;
+    }
 
 }
