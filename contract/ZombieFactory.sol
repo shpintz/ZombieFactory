@@ -24,7 +24,7 @@ contract ZombieFactory{
   mapping (address => uint) ownerZombieCount;
 
   // Function Create Zombie
-  function _createZombie(string memory _name, uint _dna) private {
+  function _createZombie(string memory _name, uint _dna) internal {
     uint id = zombies.push(Zombie(_name, _dna)) - 1;
     // Adds the zombie ID to the ETH address
     zombieToOwner[id] = msg.sender;
