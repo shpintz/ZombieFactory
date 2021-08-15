@@ -33,7 +33,7 @@ contract ZombieFeeding is ZombieFactory {
     _targetDna = _targetDna % dnaModulus;
     uint newDna = (myZombie.dna + _targetDna) / 2;
     // Checks to see if species is equal to kitty
-    if (keccak256(abi.encodePacked(_species)) == keccak256(abi.encodePacked("kitty"))){
+    if (keccak256(abi.encodePacked(_species)) == keccak256(abi.encodePacked("kitty"))) {
         // this will add 99 to the end of the DNA
         newDna = newDna - newDna % 100 + 99;
     }
