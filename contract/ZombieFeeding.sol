@@ -19,13 +19,19 @@ contract KittyInterface {
 
 
 contract ZombieFeeding is ZombieFactory {
-  // makes sure before we run function to check if zombie belongs to address
-  require(msg.sender == zombieToOwner[_zombieId]);
-  // We grab the zombie Dna and set it to myZombie
-  Zombie storage myZombie = zombies[_zombieId];
-  // Make sure its 16 digits
-  _targetDna = _targetDna % dnaModulus;
-  uint newDna = (myZombie.dna + _targetDna) / 2;
-  // Call function from zombieFactory
-  _createZombie("NoName", newDna);
+  // using the crypto kitty contract
+  address ckAddress = 0x06012c8cf97BEaD5deAe237070F9587f8E7A266d;
+  // using an interface to connect with the kitty contract
+  KittyInterface kittyContract  = KittyInterface(ckAddress);
+
+  function feedAndMultiply(uint _zombieId, uint _targetDna) public {
+    // makes sure before we run function to check if zombie belongs to address
+    require(msg.sender == zombieToOwner[_zombieId]);
+    // We grab the zombie Dna and set it to myZombie
+    Zombie storage myZombie = zombies[_zombieId];
+    // Make sure its 16 digits
+    _targetDna = _targetDna % dnaModulus;
+    uint newDna = (myZombie.dna + _targetDna) / 2;
+    // Call function from zombieFactory
+    _createZombie("NoName", newDna);
 }
