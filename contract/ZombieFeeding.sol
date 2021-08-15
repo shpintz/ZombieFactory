@@ -19,10 +19,14 @@ contract KittyInterface {
 
 
 contract ZombieFeeding is ZombieFactory {
-  // using the crypto kitty contract
-  address ckAddress = 0x06012c8cf97BEaD5deAe237070F9587f8E7A266d;
-  // using an interface to connect with the kitty contract
-  KittyInterface kittyContract  = KittyInterface(ckAddress);
+
+  // Declareing a kittyContract to be within the Kitty interface
+  KittyInterface kittyContract;
+
+  // Add setKittyContractAddress method here
+  function setKittyContractAddress(address _address) external {
+    kittyContract = KittyInterface(_address);
+  }
 
   function feedAndMultiply(uint _zombieId, uint _targetDna, string memory _species) public {
     // makes sure before we run function to check if zombie belongs to address
