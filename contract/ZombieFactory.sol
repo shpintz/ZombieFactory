@@ -55,5 +55,10 @@ contract ZombieFactory is Ownable{
     _createZombie(_name, randDna);
   }
 
+  // function will return all the zombies that belong to the user
+  function getZombiesByOwner(address _owner) external view returns(uint[] memory) {
+
+  }
+
 }
 
