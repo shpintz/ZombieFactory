@@ -28,6 +28,16 @@ contract ZombieFeeding is ZombieFactory {
     kittyContract = KittyInterface(_address);
   }
 
+  // passing a struct as argument
+  function _triggerCooldown(Zombie storage _zombie) internal {
+    _zombie.readyTime = uint32(now + cooldownTime);
+  }
+
+  function _isReady(Zombie storage _zombie) internal view returns (bool) {
+    return (_zombie.readyTime <= now);
+  }
+
+
   function feedAndMultiply(uint _zombieId, uint _targetDna, string memory _species) public {
     // makes sure before we run function to check if zombie belongs to address
     require(msg.sender == zombieToOwner[_zombieId]);
