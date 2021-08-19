@@ -4,4 +4,12 @@ import "./zombiehelper.sol";
 
 contract ZombieAttack is ZombieHelper {
 
+  uint randNonce = 0;
+
+  // Funtion that generates random numbers with keccak (no secure)
+   function randMod(uint _modulus) internal returns (uint){
+    randNonce++;
+    return uint(keccak256(abi.encodePacked(now , msg.sender, randNonce))) % _modulus;
+  }
+
 }
