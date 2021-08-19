@@ -7,6 +7,8 @@ contract ZombieAttack is ZombieHelper {
   uint randNonce = 0;
   uint attackVictoryProbability = 70;
 
+
+
   // Funtion that generates random numbers with keccak (no secure)
    function randMod(uint _modulus) internal returns (uint){
     randNonce++;
