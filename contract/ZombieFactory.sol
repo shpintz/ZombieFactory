@@ -18,6 +18,9 @@ contract ZombieFactory is Ownable{
     uint dna;
     uint32 level;
     uint32 readyTime;
+    // variables to keep track of leader board
+    uint16 winCount;
+    uint16 lossCount;
   }
 
   // Array of zombies inside zombies
@@ -30,7 +33,7 @@ contract ZombieFactory is Ownable{
 
   // Function Create Zombie
   function _createZombie(string memory _name, uint _dna) internal {
-    uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime))) - 1;
+    uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime), 0, 0)) - 1;
     // Adds the zombie ID to the ETH address
     zombieToOwner[id] = msg.sender;
     // Updates Eth address with amount of zombies it owns
